@@ -1,12 +1,21 @@
 # pyde_gauge
 PYde gauge: Routines for processing and analyzing tide gauge sea level data, generally for comparison with model output
 
+## Setting up
+Clone this repo to your local directory, then create your own branch to work in:
+```
+git clone https://github.com/clittleaer/pyde_gauge.git
+cd pyde_gauge
+git checkout -b <nameofyourbranch>
+```
+
 To start:
 1. Run import_rlr_matlab.ipynb. Or use PSMSL_data and PSMSL_ids.csv files. 
 2a. Run tg_processing. IB correction requires access to ERA-5 on NCAR RDS server.
 2b. Or use the "pseudo_tg_locations.ipynb" notebook.
 3. Run alt_processing and/or CESM LR/HR processing. 
 4. Compare two datasets using the "comp_at_points.ipynb" notebook.
+
 
 Capabilities -- available in some form
 
