@@ -5,8 +5,8 @@ To start:
 1. Run import_rlr_matlab.ipynb. Or use PSMSL_data and PSMSL_ids.csv files. 
 2a. Run tg_processing. IB correction requires access to ERA-5 on NCAR RDS server.
 2b. Or use the "pseudo_tg_locations.ipynb" notebook.
-4. Run alt_processing and/or CESM LR/HR processing. 
-5. Compare two datasets using the "comp_at_points.ipynb" notebook.
+3. Run alt_processing and/or CESM LR/HR processing. 
+4. Compare two datasets using the "comp_at_points.ipynb" notebook.
 
 Capabilities -- available in some form
 
