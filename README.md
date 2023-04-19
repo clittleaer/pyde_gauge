@@ -10,9 +10,7 @@ cd pyde_gauge
 git checkout -b <nameofyourbranch>
 ```
 
-Initial set of figures, and the included .pkl and .csv files, analyze 365 tide gauge locations and ~100 psuedo-tg locations, which takes more processing time. Code will use a reduced set of four locations.
-
-Included analysis scripts are: 1) simple comparisons of tide gauges and altimetry time series, sampled at the nearest grid point and 2) similar comparisons of model and altimetry time series, sampled at the nearest grid point to ~100 pseudo-tide gauge locations.
+Included analysis scripts are: 1) simple comparisons of tide gauges and altimetry time series, sampled at the nearest grid point (global_alt_tg_comp_at_tgs.ipynb) and 2) similar comparisons of model and altimetry time series, sampled at the nearest grid point to ~100 pseudo-tide gauge locations (global_alt_hr_comp_at_pseudo_tgs.ipynb). Initial figures, and the included .pkl and .csv files, analyze 365 tide gauge locations and ~100 psuedo-tg locations. Code will, by default, use a reduced set of four locations.
 
 ## To analyze a different set of tide gauges:
 1a. Run import_rlr_matlab.ipynb. 
@@ -21,23 +19,23 @@ Included analysis scripts are: 1) simple comparisons of tide gauges and altimetr
 
 2a. Run tg_processing. IB correction requires access to ERA-5 on NCAR RDS server.
 
-3. Run alt_processing and cesm2_hr_processing. 
+3. Run alt_processing and cesm2_hr_processing using the .csv and .pkl files exported from step 2a. Both require access to NCAR hosted datasets, for now.
 
-4. Compare two datasets using the "comp_at_points.ipynb" notebook.
+4. Send all outputs to different .csv and .pkl files, then read those into the analysis scripts.
 
 ## To analyze a different set of pseudo-tide gauges:
 
 5. Run the "pseudo_tg_locations.ipynb" notebook.
 
-6. Run alt_processing and CESM HR processing, but use the pseudo_tg_inputs.
+6. Run alt_processing and cesm2_hr_processing, but use the pseudo_tg .csv and .pkl files.
 
-## Beta version 
-### TG capabilities:
+## Beta version capabilities:
+### Tide guages
 1. Import monthly tide gauges from PSMSL.
-2. IB “Correcting” (ERA-5 for now), if you have access to NCAR RDA data
+2. IB “Correcting” (ERA-5 for now), if you have access to NCAR RDA data.
 3. Monthly processing; removing mean seasonal cycle.
 
-### altimetry/CESM2 HR capabilities:
+### Altimetry/CESM2 HR:
 1. extraction of closest point (using momlevel)from MEASURES 1/6 degree product
 2. Removal of global mean from altimetry
 3. standard time series analysis techniques, as for TG's
@@ -46,12 +44,12 @@ Included analysis scripts are: 1) simple comparisons of tide gauges and altimetr
 ## Additional capabilities to be introduced soon:
 
 ### Tide Gauges:
-1. Filtering/Infilling/Sorting along coastlines.
-2. Filtering problematic gauges (right now, using momlevel threshold of distance between tide gauge and altimetry/model)
+1. Sorting along coastlines.
+2. Filtering problematic gauges(right now, using momlevel threshold of distance between tide gauge and altimetry/model)
 
 ### CESM and altimetry
-1. gridded analyses, regridding
-2. CESM fosi, multiple cycles, LR and HR, and coupled simulations.
+1. Gridded analyses, regridding
+2. CESM FOSI, multiple cycles, LR and HR, and coupled simulations.
 3. SEANOE dataset
 <!-- Analysis example — just TG/ALT
 Analysis from CESM HR/LR paper in prep (filtering)
@@ -61,11 +59,10 @@ Wavelets/power spectra/standard statistical analyses -->
 1. Wrap and/or recode RLR script from PSMSL
 2. Long-period tide “corrections”
 3. Uncertainty in IB/GM corrections (multiple datasets)
-4. Correcting for “global mean” terms, including fingerprints (Using Fredrikse et al. 2021 Dataset) and VLM (using XXX)
-5. Careful vetting of coastal locations where it makes sense to compare with models/altimetry. Ideally, these are locations right along the coastline and are not nestled back in and embayments or upriver.  
-* My -- maybe idealistic -- vision is to have this be determined by the spatial coherence of TGs (which of course will be determined by the spatial/temporal scale you care about!).
+4. Correcting for “global mean” terms, including fingerprints (Using Fredrikse et al. 2021 Dataset) and VLM (using, e.g., Hammond et al. 2021:  https://doi.org/10.1029/2021JB022355)
+5. Careful vetting of coastal locations where it makes sense to compare with models/altimetry. Ideally, these are locations right along the coastline and are not nestled back in and embayments or upriver. My -- maybe idealistic -- vision is to have this be determined by the spatial coherence of TGs (which of course will be determined by the spatial/temporal scale you care about!).
 6. Clustering/spatial averaging/coherence.
-7. Time mean
+7. Time mean quantities
 
 ## Datasets -- desired
  * SWOT
@@ -76,6 +73,5 @@ Wavelets/power spectra/standard statistical analyses -->
  * Generic CMIP6
 
 ## momlevel improvements
- 
 * I agree that knowing the cell depth would be useful.  The analysis is fast, so one could simply repeat the analysis by passing an array of "deptho" to get the depth at the selected locations.
 * The call from momlevel to Scikit could be adapted to return all of the nearest neighbor points within a threshold to compute a mean/variance.  A modest amount of work is needed, but it's not an intractable problem.
