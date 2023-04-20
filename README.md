@@ -10,7 +10,7 @@ cd pyde_gauge
 git checkout -b <nameofyourbranch>
 ```
 
-Included analysis scripts are: 1) simple comparisons of tide gauges and altimetry time series, sampled at the nearest grid point (global_alt_tg_comp_at_tgs.ipynb) and 2) similar comparisons of model and altimetry time series, sampled at the nearest grid point to ~100 pseudo-tide gauge locations (global_alt_hr_comp_at_pseudo_tgs.ipynb). Initial figures, and the included .pkl and .csv files, analyze 365 tide gauge locations and ~100 psuedo-tg locations. Code will, by default, use a reduced set of four locations.
+Included analysis scripts are: 1) simple comparisons of tide gauges and altimetry time series, sampled at the nearest grid point (global_alt_tg_comp_at_tgs.ipynb) and 2) similar comparisons of model and altimetry time series, sampled at the nearest grid point to pseudo-tide gauge locations (global_alt_hr_comp_at_pseudo_tgs.ipynb). Initial figures, and the included .pkl and .csv files, analyze 365 tide gauge locations and ~300 psuedo-tg locations. Code will, by default, use a reduced set of four locations.
 
 ## To analyze a different set of tide gauges:
 1a. Run import_rlr_matlab.ipynb. 
